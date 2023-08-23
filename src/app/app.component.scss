@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  app-header {
+    height: 100px;
+    overflow: hidden;
+  }
+
+  main {
+    height: calc(100vh - 100px);
+  }
+}

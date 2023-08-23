@@ -1,0 +1,13 @@
+<!-- <div class="messages-screen"> -->
+
+  <app-contact-list (contactSelected)="onContactSeleted($event)"></app-contact-list>
+
+  <div class="right-container">
+
+    <app-messages [selectedContactId]="selectedContactId"></app-messages>
+
+    <app-send-form [selectedContactId]="selectedContactId"></app-send-form>
+
+  </div>
+
+<!-- </div> -->

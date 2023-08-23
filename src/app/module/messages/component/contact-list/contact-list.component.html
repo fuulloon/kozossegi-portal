@@ -1,0 +1,8 @@
+<div class="contacts-container">
+  <div class="contact" *ngFor="let contact of messageContacts$ | async">
+    <div (click)="selectContact(contact.userId)"
+         [ngClass]="{'selected':contact.userId===selectedContactId}">
+      {{ contact.userName }}
+  </div>
+  </div>
+</div>

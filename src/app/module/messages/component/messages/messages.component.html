@@ -1,0 +1,9 @@
+<div class="messages-container">
+
+  <ng-container *ngFor="let message of messages$ | async">
+
+    <app-message [message]="message" [contactId]="selectedContactId"></app-message>
+
+  </ng-container>
+
+</div>

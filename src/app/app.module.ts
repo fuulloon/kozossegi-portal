@@ -2,19 +2,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FormsModule } from '@angular/forms';
-import { AuthModule } from './auth/auth.module';
 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DbMockService } from './shared/mock/inmemorydb.service';
-import { AuthService } from './shared/services/auth.service';
+
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './module/user/user.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { MessagesService } from './shared/services/messages.service';
-import { NotificationService } from './shared/services/notification.service';
-import { PostService } from './shared/services/post.service';
-import { UserService } from './shared/services/user.service';
+
+import { MessageDataService } from './shared/service/data/message-data.service';
+import { MessageStateService } from './shared/service/state/message-state.service';
 
 @NgModule({
   declarations: [
@@ -27,11 +27,13 @@ import { UserService } from './shared/services/user.service';
     AppRoutingModule,
     FormsModule,
     AuthModule,
+    UserModule,
     InMemoryWebApiModule.forRoot(DbMockService, { delay: 0 })
   ],
   providers: [
-    AuthService
+    MessageDataService,
+    MessageStateService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

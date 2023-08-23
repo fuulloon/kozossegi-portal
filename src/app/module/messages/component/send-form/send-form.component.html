@@ -1,0 +1,14 @@
+<div class="new" *ngIf="selectedContactId!==null">
+  <form #messageForm="ngForm" (submit)="send(messageForm)">
+    <input type="text"
+           id="newMessage"
+           name="newMessage"
+           #newMessageInput="ngModel"
+           placeholder="Üzenet írása"
+           aria-label="Üzenet írása"
+           ngModel>
+    <button type="submit" [disabled]="newMessageInput.value===''">
+      KÜLDÉS
+    </button>
+  </form>
+</div>

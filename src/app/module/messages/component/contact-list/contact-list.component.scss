@@ -1,0 +1,28 @@
+.contacts-container {
+  display: flex;
+  flex-direction: column;
+  flex: 30%;
+  height: 100%;
+  background-color: #dfeed3;
+
+  .contact {
+    display: flex;
+    height: 40px;
+    background-color: #97C96E;
+    border-bottom: 1px solid #FFF8EB;
+    cursor: pointer;
+
+    &:first-child {
+      border-top: 1px solid #FFF8EB;
+    }
+
+    div {
+      width: 100%;
+      padding: 5px;
+
+      &.selected {
+        background-color: #CEA1C1;
+      }
+    }
+  }
+}

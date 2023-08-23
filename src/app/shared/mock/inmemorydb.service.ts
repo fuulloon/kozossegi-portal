@@ -1,17 +1,25 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
-import { UserRole } from '../enums/user-role.enum';
+import { UserRole } from '../enum/user-role.enum';
+import { MessageType } from '../enum/messagetype.enum';
+import { Message } from '../model/message.model';
+import { User } from 'src/app/module/user/model/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DbMockService implements InMemoryDbService {
+  private users: User[] = [];
+  private messages: Message[] = [];
+
   createDb() {
-    const users = [
+
+    this.users = [
       {
         id: 1,
         name: 'Admin',
-        email: 'admin@b.c',
+        email: 'a@a.a',
+        /* password: 'TVRJeg==', */
         password: 'MTIz',
         active: true,
         about: "Én vagyok az admin :)",
@@ -76,55 +84,84 @@ export class DbMockService implements InMemoryDbService {
       },
     ];
 
-    const notifications = [
-      { id: 1, forUser: 1, message: 'Új ismerősnek jelölés: User 4' },
-      { id: 2, forUser: 1, message: 'Új üzenet tőle: User 3' }
-    ];
-
-    const posts = [
-      { id: 1, fromUser: 2, timestamp: '2023-08-07T11:34:56.789Z', text: 'Ez az első poszt' },
-      { id: 2, fromUser: 5, timestamp: '2023-08-07T12:40:12.333Z', text: 'Itt pedig a második' },
-      { id: 3, fromUser: 6, timestamp: '2023-08-07T15:50:44.555Z', text: 'Nyilván ez a harmadik' }
-    ];
-
-    const messages = [
+    this.messages = [
+      {
+        id: 0,
+        type: MessageType.Notification,
+        toUser: 1,
+        message: 'Új ismerősnek jelölés: User 4',
+        timestamp: '2023-08-07T11:34:56.789Z'
+      },
       {
         id: 1,
+        type: MessageType.Notification,
+        toUser: 1,
+        message: 'Új üzenet tőle: User 3',
+        timestamp: '2023-08-07T11:34:56.789Z'
+      },
+      {
+        id: 2,
+        type: MessageType.Post,
+        fromUser: 2,
+        timestamp: '2023-08-07T11:34:56.789Z',
+        message: 'Ez az első poszt'
+      },
+      {
+        id: 3,
+        type: MessageType.Post,
+        fromUser: 5,
+        timestamp: '2023-08-07T12:40:12.333Z',
+        message: 'Itt pedig a második' },
+      {
+        id: 4,
+        type: MessageType.Post,
+        fromUser: 6,
+        timestamp: '2023-08-07T15:50:44.555Z',
+        message: 'Nyilván ez a harmadik'
+      },
+      {
+        id: 5,
+        type: MessageType.Message,
         fromUser: 1,
         toUser: 2,
         timestamp: '2023-08-07T11:34:56.789Z',
         message: 'Hello User 2!'
       },
       {
-        id: 2,
+        id: 6,
+        type: MessageType.Message,
         fromUser: 3,
         toUser: 1,
         timestamp: '2023-08-07T12:34:56.789Z',
         message: 'Hello User 1!'
       },
       {
-        id: 3,
+        id: 7,
+        type: MessageType.Message,
         fromUser: 1,
         toUser: 3,
         timestamp: '2023-08-07T13:34:56.789Z',
         message: 'Hello User!'
       },
       {
-        id: 4,
+        id: 8,
+        type: MessageType.Message,
         fromUser: 3,
         toUser: 1,
         timestamp: '2023-08-07T14:34:56.789Z',
         message: 'Mi a helyzet?'
       },
       {
-        id: 5,
+        id: 9,
+        type: MessageType.Message,
         fromUser: 1,
         toUser: 3,
         timestamp: '2023-08-07T15:34:56.789Z',
         message: 'Áh, semmi.'
       },
       {
-        id: 6,
+        id: 10,
+        type: MessageType.Message,
         fromUser: 5,
         toUser: 1,
         timestamp: '2023-08-07T16:34:56.789Z',
@@ -132,6 +169,6 @@ export class DbMockService implements InMemoryDbService {
       },
     ];
 
-    return { users, messages, notifications, posts };
+    return { users: this.users, messages: this.messages };
   }
 }

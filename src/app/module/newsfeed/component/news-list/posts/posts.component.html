@@ -1,0 +1,5 @@
+<div class="post" *ngFor="let post of posts$ | async">
+  <p class="name">{{ post.toUserName }}</p>
+  <p class="text">" {{ post.message }} "</p>
+  <p class="date">{{ post.timestamp | date:'Y.MM.dd. HH:MM' }}</p>
+</div>

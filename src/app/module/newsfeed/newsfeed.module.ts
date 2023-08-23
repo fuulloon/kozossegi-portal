@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NewsListComponent } from './component/news-list/news-list.component';
-import { NotificationsComponent } from './component/news-list/notifications/notifications.component';
-import { PostsComponent } from './component/news-list/posts/posts.component';
+import { NewsfeedComponent } from './component/newsfeed.component';
+import { NotificationsComponent } from './component/notifications/notifications.component';
+import { PostsComponent } from './component/posts/posts.component';
 import { FormsModule } from '@angular/forms';
+import { NewFormComponent } from './component/new-form/new-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: NewsListComponent,
+    component: NewsfeedComponent,
   }
 ];
 
 @NgModule({
   declarations: [
-    NewsListComponent,
+    NewsfeedComponent,
     NotificationsComponent,
-    PostsComponent
+    PostsComponent,
+    NewFormComponent
   ],
   imports: [
     CommonModule,

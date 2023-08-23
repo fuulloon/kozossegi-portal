@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  padding-bottom: 70px;
+
+  app-notifications {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 40%;
+  }
+
+  app-posts {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 60%;
+  }
+
+  app-new-form {
+    display: flex;
+    width: 100%;
+  }
+}

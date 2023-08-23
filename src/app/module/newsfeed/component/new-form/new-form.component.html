@@ -1,0 +1,14 @@
+<div class="new">
+  <form #postForm="ngForm" (submit)="send(postForm)">
+    <input type="text"
+            id="newPost"
+            name="newPost"
+            #newPostInput="ngModel"
+            placeholder="Üzenet mindenkinek"
+            aria-label="Üzenet mindenkinek"
+            ngModel>
+    <button type="submit" [disabled]="newPostInput.value===''">
+      KÜLDÉS
+    </button>
+  </form>
+</div>

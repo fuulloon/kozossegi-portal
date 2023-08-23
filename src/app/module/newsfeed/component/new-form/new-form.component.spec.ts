@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewsListComponent } from './news-list.component';
+import { NewFormComponent } from './new-form.component';
 
-describe('NewsListComponent', () => {
-  let component: NewsListComponent;
-  let fixture: ComponentFixture<NewsListComponent>;
+describe('NewFormComponent', () => {
+  let component: NewFormComponent;
+  let fixture: ComponentFixture<NewFormComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NewsListComponent]
+      declarations: [NewFormComponent]
     });
-    fixture = TestBed.createComponent(NewsListComponent);
+    fixture = TestBed.createComponent(NewFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

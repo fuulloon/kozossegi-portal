@@ -1,19 +1,17 @@
 import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-import { PostsComponent } from './posts/posts.component';
 import { MessageStateService } from 'src/app/shared/service/state/message-state.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-newsfeed',
-  templateUrl: './news-list.component.html',
-  styleUrls: ['./news-list.component.scss'],
+  selector: 'app-new-form',
+  templateUrl: './new-form.component.html',
+  styleUrls: ['./new-form.component.scss']
 })
-export class NewsListComponent {
+export class NewFormComponent {
   @ViewChild('postForm') postForm!: NgForm;
-  @ViewChild('postsComponentRef', { static: false })
-  postsComponent!: PostsComponent;
+  /* @ViewChild('postsComponentRef', { static: false })
+    postsComponent!: PostsComponent; */
 
   constructor(private messageStateService: MessageStateService) {}
 

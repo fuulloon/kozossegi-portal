@@ -38,8 +38,8 @@ const routes: Routes = [
   {
     path: 'messages',
     loadChildren: () =>
-      import('./module/messages/messages-routing.module')
-        .then((m) => m.MessagesRoutingModule),
+      import('./module/messages/messages.module')
+        .then((m) => m.MessagesModule),
     canActivateChild: [AuthGuard],
     canLoad: [AuthGuard],
   },

@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Message } from 'src/app/shared/model/message.model';
 import { MessageStateService } from "src/app/shared/service/state/message-state.service";

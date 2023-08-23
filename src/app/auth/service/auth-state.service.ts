@@ -1,5 +1,4 @@
 import { map, Observable } from 'rxjs';
-
 import { Injectable } from '@angular/core';
 
 import { User } from '../../module/user/model/user.model';

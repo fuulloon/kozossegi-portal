@@ -1,14 +1,13 @@
 import { catchError, map, Observable, of, switchMap } from 'rxjs';
-import { UserStateService } from 'src/app/module/user/state';
-import { UserRegData } from 'src/app/module/user/model/user-reg.model';
-
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
+import { UserStateService } from 'src/app/module/user/state';
+import { UserRegData } from 'src/app/module/user/model/user-reg.model';
 import { AuthStateService } from './auth-state.service';
 import { User, UserAdd } from 'src/app/module/user/model/user.model';
 import { UserRole } from 'src/app/shared/enum/user-role.enum';
-import { HttpClient } from '@angular/common/http';
 import { UserLoginData } from 'src/app/module/user/model/user-login.model';
 import { AuthResponse } from 'src/app/auth/model/auth-response.model';
 

@@ -1,25 +1,17 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-import {
-  BehaviorSubject,
-  combineLatest,
-  filter,
-  map,
-  Observable,
-  of,
-  Subscription,
-} from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { BehaviorSubject, combineLatest, filter, map,
+          Observable } from 'rxjs';
 import { AuthStateService } from 'src/app/auth/service';
 import { User } from 'src/app/module/user/model/user.model';
 import { NotificationService } from 'src/app/module/newsfeed/service/notification-util.service';
 import { UserStateService } from '../../state';
+import { Store, select } from '@ngrx/store';
+import * as UserActions from '../../ngrx/user.actions';
+import { errorSelector, isLoadingSelector, usersSelector } from '../../ngrx/user.selector';
+import { AppStateInterface } from '../../../../shared/ngrx/app-state.interface';
 
 @Component({
-  /* changeDetection: ChangeDetectionStrategy.OnPush, */
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
@@ -32,15 +24,26 @@ export class UserListComponent implements OnInit {
   public filter: string = 'all';
   public filteredUsers$!: Observable<User[]>;
 
+  // isLoading$: Observable<boolean>;
+  // error$: Observable<string | null>;
+  users$: Observable<User[]>;
+
   constructor(private userStateService: UserStateService,
               private authStateService: AuthStateService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private store: Store<AppStateInterface>) {
     this.filter$$ = new BehaviorSubject(this.filter);
+
+    // this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+    // this.error$ = this.store.pipe(select(errorSelector));
+    this.users$ = this.store.pipe(select(usersSelector));
   }
 
   ngOnInit(): void {
+
     this.filteredUsers$ = combineLatest([
-      this.userStateService.getUsers(),
+      //this.userStateService.getUsers(),
+      this.store.pipe(select(usersSelector)),
       this.filter$$,
       this.authStateService
         .getAuthenticatedUser()

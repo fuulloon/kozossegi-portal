@@ -24,6 +24,4 @@ export class Store<T> {
     this.state$$.next(value);
   }
 
-
-
 }

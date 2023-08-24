@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { MessageType } from 'src/app/shared/enum/messagetype.enum';
 import { Message } from 'src/app/shared/model/message.model';
 import { MessageStateService } from "src/app/shared/service/state/message-state.service";
 
@@ -16,7 +17,7 @@ export class PostsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.posts$ = this.messageStateService
-      .getMessages()
+      .getMessages(MessageType.Post)
       .pipe(map((posts) => posts.sort((a, b) => b.id - a.id)));
   }
 }

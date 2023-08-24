@@ -56,13 +56,18 @@ export class MessageStateService extends Store<MessageState> implements OnDestro
       .subscribe();
   }
 
-  public getMessages(): Observable<Message[]> {
+  public getMessages(typeToFilter: MessageType | null = null): Observable<Message[]> {
     return combineLatest([
       this.userStateService.getUsers(),
       this.getState$(),
     ]).pipe(
       map(([users, state]) => {
-        return state.messages.map((message, _, messages) => {
+        let filteredMessages = state.messages;
+        if (typeToFilter) {
+          filteredMessages = filteredMessages.filter(message =>
+            message.type === typeToFilter)
+        }
+        return filteredMessages.map(message => {
           switch (message.type) {
             case MessageType.Notification:
               break;

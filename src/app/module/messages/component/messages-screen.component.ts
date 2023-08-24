@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MessageStateService } from 'src/app/shared/service/state/message-state.service';
 
 @Component({
@@ -9,9 +10,15 @@ import { MessageStateService } from 'src/app/shared/service/state/message-state.
 export class MessagesScreenComponent implements OnInit {
   selectedContactId: number | null = null;
 
-  constructor(private messageStateService: MessageStateService) {}
+  constructor(private messageStateService: MessageStateService,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id']) {
+        this.selectedContactId = +params['id'];
+      }
+    });
     this.messageStateService.dispatchGetMessages();
   }
 

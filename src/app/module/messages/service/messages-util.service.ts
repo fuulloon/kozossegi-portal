@@ -37,7 +37,7 @@ export class MessagesUtilService {
 
   public getMessagesWithUser(userId: number): Observable<Message[]> {
     return combineLatest([
-      this.messagesStateService.getMessages(),
+      this.messagesStateService.getMessages(MessageType.Message),
       this.authStateService
         .getAuthenticatedUser()
         .pipe(filter((authenticatedUser) => !!authenticatedUser))
